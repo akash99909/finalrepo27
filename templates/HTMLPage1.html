@@ -1,0 +1,133 @@
+﻿
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="{{ url_for('static', filename='abc.css') }}" rel="stylesheet">
+    <link rel = "stylesheet" 
+    href = "https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" 
+    integrity = "sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" 
+    crossorigin = "anonymous">
+    
+</head>
+<body>
+
+
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a  class="navba" href="#"> <b>De-Accelerator</b></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a href="{{ url_for('indexpage') }} ">Home</a>
+
+          </form>
+        </div>
+      </nav>
+
+
+
+
+<br><br>
+    <div class="fullcontainer">
+    <div class="maincontainer">
+        <form method='post' action='http://localhost:5000/form1'>
+            <div class="firstcontainer">
+                <input type="text" class="toshow" value="Existing Data Size">
+            <input name="sum" id="sumconatiner" value={{sum}} ><br>
+        </div>
+
+        <div class="secondcontainern">
+            <input type="text" class="toshow" value="Overall Average Estimated % Quaterly Volume">
+
+            <input name="sum" id="storedper" value={{per}} disabled><br>
+
+        </div>
+        <div class="thirdcontainer">
+            <input type="text" class="toshow" value="Incremental">
+            <input name='per' id="givenper">
+
+        </div>
+        <button class = "btn btn-primary" type='submit'>submit</button>
+        <button   class = "btn btn-primary" type="button" onclick="myfunction()">Calculate</button>
+        </form>
+        
+
+      </div>
+    
+      <div class="boxcontainer">
+          <button  class="bot" onclick="addRows()">Add New Column </button>
+    
+      </div>
+    </div>  
+    <div class="secondcontainer">
+        <input type="text"  class="toprow" value="Existing System Analysis"  >
+    </div>
+    <div class="allheadings">
+        <input value="Object ID"class="b"><input value="System Name"class="b"><input value="Schema Name"class="b"><input value="Database Name"class="b"><input value="Object/Table Name"class="b"><input value="No. of Columns"class="b"><input value="Record Count"class="b"><input value="Partition Column"class="b"><input value="Primary Index Column"class="b"><input value="Secondary Index Column"class="b"><input value="Table Size (GB)"class="b"><input value="Average Estimated Growth(%) Volume Quaterly"class="b">
+    </div>
+    <form action = "http://localhost:5000/form" method="POST">
+        <div class="newColumn">
+            <input name="sen1[]"class="inputbox"><input name="sen2[]"class="inputbox"><input name="sen3[]"class="inputbox"><input name="sen4[]"class="inputbox"><input name="sen5[]"class="inputbox"><input name="sen6[]"class="inputbox"><input name="sen7[]"class="inputbox"><input name="sen8[]"class="inputbox"><input name="sen9[]"class="inputbox"><input name="sen10[]"class="inputbox"><input name="sen11[]"class="inputbox"><input name="sen12[]"class="inputbox">
+        </div>
+        <br><br><br>
+        <div class="bhh"><input class = "btn btn-primary" type="submit" value="Submit">
+        <button class = "btn btn-primary" onclick="def()" type="button"> Calculate</button>    </div>
+    </form>
+    
+
+    <script>
+
+        function def(){
+            
+            a = document.getElementsByName("sen11[]")
+            var keys = Object.keys(a);
+        
+            var len = keys.length;
+            console.log(a)
+            sum12=0;
+            for(let i=0;i<len;i++){
+               sum12=sum12+Number(document.getElementsByName("sen11[]")[i].value);  
+           }
+           console.log(sum12);    
+           let n=document.getElementById("sumconatiner");
+           n.value=sum12;
+           console.log(sum12);    
+        }
+        function myfunction(){
+        let sum12=document.getElementById("sumconatiner").value;
+        sum12=Number(sum12);
+      
+      //et sp=document.getElementById("storedper");
+      let gp=document.getElementById("givenper").value;
+      gp=Number(gp);
+      
+      let sp=document.getElementById("storedper");
+      sp.value=((gp/100)*sum12);
+ 
+    }
+    
+        function addRows() {
+            s = document.getElementsByClassName("newColumn");
+            let r;
+            r=prompt("how many rows:", );
+            r=Number(r);
+            console.log(r);
+            for (let i = 0 ; i < r; i++){
+            obj = document.createElement("div");
+            obj.innerHTML = '<input name="sen1[]" class="inputbox"><input name = "sen2[]" class="inputbox"><input name="sen3[]" class="inputbox"><input name="sen4[]" class="inputbox"><input name="sen5[]" class="inputbox"><input name="sen6[]" class="inputbox"><input name="sen7[]" class="inputbox"><input name="sen8[]" class="inputbox"><input name="sen9[]" class="inputbox"><input name="sen10[]"class="inputbox"><input name="sen11[]" class="inputbox"><input name="sen12[]" class="inputbox">';
+            s[0].appendChild(obj)}
+        }
+    </script>
+</body>
+</html>
+
+
+
+
