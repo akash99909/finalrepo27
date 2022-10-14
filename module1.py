@@ -132,6 +132,10 @@ def getData():
                     continue
                 sum = sum + int(row[0])
         print(sum)
+        sql3="SELECT s12 from de_accelerator order by f1 desc"
+        rows = cursor.fetchmany(count)
+
+
 
 
 
